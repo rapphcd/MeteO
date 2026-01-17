@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Meteo - {{ ville }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/stylemeteo.css') }}" />
+</head>
+
+<body>
+    <div class="meteo">
+        <div class="title">
+            <h1>{{ ville }}</h1>
+        </div>
+        <div class="part">
+            <div class="infos">
+                <p style="{{ color }}">
+                    {{ temp }}°C <br />
+                </p>
+                <p>
+                    {{ description }}
+                </p>
+                <p>
+                    Humidité: {{ humidity }}%
+                </p>
+                <img src="https://openweathermap.org/img/wn/{{ icon }}@2x.png" alt="{{ description }}" />
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

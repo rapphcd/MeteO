@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Meteo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>MeteO</h1>
+    <div id="form">
+        <form action="{{ url_for('meteo') }}" method="post">
+            <label for="ville"></label><input type="text" name="ville" id="ville" placeholder="ex. Paris" required>
+        <button type="submit">Envoyer</button>
+        </form>
+    </div>
+</body>
+</html>

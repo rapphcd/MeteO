@@ -1,0 +1,56 @@
+:root {
+  --bg: rgb(51, 53, 61); 
+  --second: rgb(95, 97, 104);
+  --third: rgb(66, 68, 74)
+}
+
+body {
+    background-color: var(--bg);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height:100vh;
+    margin:0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h1 {
+    font-size: 100px;
+    margin: 25px;
+}
+
+#form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--third);
+    padding: 5px;
+    margin: 25px;
+    border-radius: 20px;
+}
+
+input {
+    padding: 20px;
+    border-radius: 15px;
+    border: 0;
+    font-size: 20px;
+    background-color: var(--second);
+    color: white;
+}
+
+input:focus {
+    border: 0;
+    outline: none;
+}
+
+button {
+    padding: 20px;
+    border-radius: 15px;
+    border: 0;
+    font-size: 20px;
+    cursor:pointer;
+    background-color: var(--second);
+    color: white;
+}
