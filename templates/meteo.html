@@ -3,27 +3,27 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Meteo - {{ ville }}</title>
+    <title>Meteo - {{ data['ville'] }}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/stylemeteo.css') }}" />
 </head>
 
 <body>
     <div class="meteo">
         <div class="title">
-            <h1>{{ ville }}</h1>
+            <h1>{{ data['ville'] }}</h1><h3>{{ data['country'] }}</h3>
         </div>
         <div class="part">
             <div class="infos">
-                <p style="color: {{ color }};">
-                    {{ temp }}°C <br />
+                <p style="color: {{ data['color'] }};">
+                    {{ data['temp'] }}°C <br />
                 </p>
                 <p>
-                    {{ description }}
+                    {{ data["description"] }}
                 </p>
                 <p>
-                    Humidité: {{ humidity }}%
+                    Humidité: {{ data['humidity'] }}%
                 </p>
-                <img src="https://openweathermap.org/img/wn/{{ icon }}@2x.png" alt="{{ description }}" />
+                <img src="https://openweathermap.org/img/wn/{{ data['icon'] }}@2x.png" alt="{{ data['description'] }}" />
             </div>
         </div>
     </div>

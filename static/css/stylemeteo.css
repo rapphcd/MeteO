@@ -17,7 +17,6 @@ body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-
 .meteo {
     height: 100%;
     display: flex;
@@ -26,7 +25,14 @@ body {
 }
 
 .title {
+    display: flex;
+    justify-content: flex-start;
+    align-items: end;
     height: 15%;
+}
+
+.title h3 {
+    color: rgb(128, 130, 139);;
 }
 
 .part {
@@ -56,8 +62,8 @@ body {
 }
 
 h1 {
-    font-size: 100px;
-    padding: 10px 30px;
+    font-size: 85px;
+    margin: 0 15px 0 30px;
 }
 
 .meteo img {

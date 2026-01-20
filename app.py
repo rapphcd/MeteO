@@ -62,15 +62,7 @@ def meteo():
         if dat["cod"] == '404':
             return redirect(url_for('index'))
         return render_template(
-            'meteo.html',
-            ville=dat["ville"],
-            temp=dat["temp"],
-            humidity=dat["humidity"],
-            description=dat["description"].capitalize(),
-            icon=dat["icon"],
-            color=dat["color"],
-            country=dat["country"]
-        )
+            'meteo.html',data=dat)
     return redirect(url_for('index'))
 
 @app.route('/meteo/<ville>')
@@ -82,15 +74,7 @@ def meteoville(ville):
         return redirect(url_for('index'))
 
     return render_template(
-        'meteo.html',
-        ville=dat["ville"],
-        temp=dat["temp"],
-        humidity=dat["humidity"],
-        description=dat["description"].capitalize(),
-        icon=dat["icon"],
-        color=dat["color"],
-        country=dat["country"]
-    )
+        'meteo.html',data=dat )
 
 
 if __name__ == '__main__':
