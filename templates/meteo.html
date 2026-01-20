@@ -2,31 +2,50 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <title>Meteo - {{ data['ville'] }}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/stylemeteo.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/stylemeteo.css') }}"/>
 </head>
 
 <body>
-    <div class="meteo">
-        <div class="title">
-            <h1>{{ data['ville'] }}</h1><h3>{{ data['country'] }}</h3>
-        </div>
-        <div class="part">
-            <div class="infos">
-                <p style="color: {{ data['color'] }};">
-                    {{ data['temp'] }}°C <br />
-                </p>
-                <p>
-                    {{ data["description"] }}
-                </p>
-                <p>
-                    Humidité: {{ data['humidity'] }}%
-                </p>
-                <img src="https://openweathermap.org/img/wn/{{ data['icon'] }}@2x.png" alt="{{ data['description'] }}" />
-            </div>
-        </div>
+<div class="meteo">
+    <div class="title">
+        <h1>{{ data['ville'] }}</h1>
+        <h3>{{ data['country'] }}</h3>
     </div>
+    <div class="part">
+        <div class="infos">
+            <h3>Maintenant</h3>
+            <p style="color: {{ data['color'] }};">
+                {{ data['temp'] }}°C <br/>
+            </p>
+            <p>
+                {{ data["description"] }}
+            </p>
+            <p>
+                Humidité: {{ data['humidity'] }}%
+            </p>
+            <img src="https://openweathermap.org/img/wn/{{ data['icon'] }}@2x.png" alt="{{ data['description'] }}"/>
+        </div>
+        {% if data['forecast']['success'] %}
+        <div class="infos">
+            <h3>Dans 5 jours</h3>
+            <p style="color: {{ data['forecast']['color'] }};">
+                {{ data['forecast']['temp']['predicted'] }}°C <span class="templabel">( {{data['forecast']['temp']['min']}}°C - {{data['forecast']['temp']['min']}}°C)</span>
+                <br/>
+            </p>
+            <p>
+                {{ data['forecast']["description"] }}
+            </p>
+            <p>
+                Humidité: {{ data['forecast']['humidity'] }}%
+            </p>
+            <img src="https://openweathermap.org/img/wn/{{ data['forecast']['icon'] }}@2x.png"
+                 alt="{{ data['forecast']['description'] }}"/>
+        </div>
+        {% endif %}
+    </div>
+</div>
 </body>
 
 </html>

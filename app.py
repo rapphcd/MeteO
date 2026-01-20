@@ -18,6 +18,7 @@ def getTempColor(temp):
         c = "white"
     return c
 
+
 def recup_data(ville):
     url = f"https://api.openweathermap.org/data/2.5/weather?q={ville}&units=metric&appid={appid}"
     response = requests.get(url)
@@ -26,22 +27,27 @@ def recup_data(ville):
 
         dc = {"cod": dico["cod"], "ville": dico["name"], "temp": dico["main"]["temp"],
               "humidity": dico["main"]["humidity"], "description": dico["weather"][0]["description"],
-              "icon": dico["weather"][0]["icon"], "country": dico["sys"]["country"], "color": getTempColor(dico["main"]["temp"])}
+              "icon": dico["weather"][0]["icon"], "country": dico["sys"]["country"],
+              "color": getTempColor(dico["main"]["temp"])}
 
         lon = dico['coord']['lon']
         lat = dico['coord']['lat']
 
-        forecast_url = f'https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={appid}'
+        forecast_url = f'https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&units=metric&appid={appid}'
 
         forecast_response = requests.get(forecast_url)
         forecasts = forecast_response.json()
 
         if forecasts["cod"] == "200":
             forecast = forecasts['list'][-1]
-            final_forecast = {'temp': {'min': forecast["main"]['temp_min'], 'max': forecast["main"]['temp_max'],
+            final_forecast = {'success': True,
+                              'temp': {'min': forecast["main"]['temp_min'], 'max': forecast["main"]['temp_max'],
                                        'predicted': forecast["main"]['temp']}, "humidity": forecast["main"]['humidity'],
-                              "description": forecast["weather"][0]["description"], "icon": forecast["weather"][0]["icon"], "color": getTempColor(forecast["main"]['temp'])}
+                              "description": forecast["weather"][0]["description"],
+                              "icon": forecast["weather"][0]["icon"], "color": getTempColor(forecast["main"]['temp'])}
             dc["forecast"] = final_forecast
+        else:
+            dc["forecast"] = {'success': False}
     else:
         dc = {"cod": dico["cod"]}
     return dc
@@ -62,8 +68,9 @@ def meteo():
         if dat["cod"] == '404':
             return redirect(url_for('index'))
         return render_template(
-            'meteo.html',data=dat)
+            'meteo.html', data=dat)
     return redirect(url_for('index'))
+
 
 @app.route('/meteo/<ville>')
 def meteoville(ville):
@@ -74,7 +81,7 @@ def meteoville(ville):
         return redirect(url_for('index'))
 
     return render_template(
-        'meteo.html',data=dat )
+        'meteo.html', data=dat)
 
 
 if __name__ == '__main__':

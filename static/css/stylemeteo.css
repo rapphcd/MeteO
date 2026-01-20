@@ -1,7 +1,7 @@
 :root {
-  --bg: rgb(51, 53, 61); 
-  --second: rgb(95, 97, 104);
-  --third: rgb(66, 68, 74)
+    --bg: rgb(51, 53, 61);
+    --second: rgb(95, 97, 104);
+    --third: rgb(66, 68, 74)
 }
 
 * {
@@ -12,9 +12,9 @@
 body {
     background-color: var(--bg);
     color: white;
-    height:100vh;
-    margin:0;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    height: 100vh;
+    margin: 0;
+    font-family: "Roboto Light", Geneva, Tahoma, sans-serif;
 }
 
 .meteo {
@@ -22,6 +22,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .title {
@@ -29,6 +30,11 @@ body {
     justify-content: flex-start;
     align-items: end;
     height: 15%;
+}
+
+.title h1 {
+    font-size: 80px;
+    margin: 0 15px 0 30px;
 }
 
 .title h3 {
@@ -40,7 +46,9 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    height:85%;
+    flex-wrap: wrap;
+    gap: 5%;
+    height: 85%;
 }
 
 .infos {
@@ -61,12 +69,12 @@ body {
     background: var(--second);
 }
 
-h1 {
-    font-size: 85px;
-    margin: 0 15px 0 30px;
-}
-
 .meteo img {
     height: 100px;
     width: 100px;
+}
+
+.templabel {
+    color: #a6a6a6;
+    font-size: 15px;
 }
